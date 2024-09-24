@@ -45,8 +45,38 @@ var valid_keys_dict: Dictionary = {
 	"Space": " ",
 }
 
+var delete_time: float = 0.0
+var delete_interval: float = 0.1
+var initial_delete_delay: float = 0.3
+var is_backspace_held: bool = false
+
+func _process(delta) -> void:
+	# hold backspace to delete multiple characters
+	if Input.is_action_pressed("backspace"):
+		if is_backspace_held:
+			delete_time -= delta
+			if delete_time <= 0.0:
+				deleteChar()
+				delete_time = delete_interval
+		else:
+			delete_time -= delta
+			if delete_time <= 0.0:
+				is_backspace_held = true
+				delete_time = delete_interval
+	else:
+		is_backspace_held = false
+
 func _input(event) -> void:
-	if event.is_pressed():
-		print(OS.get_keycode_string(event.keycode))
-	if event.is_pressed() and OS.get_keycode_string(event.keycode) in valid_keys_dict:
+	if (event.is_pressed()
+	and OS.get_keycode_string(event.keycode) in valid_keys_dict # checks if valid key
+	and answer.get_parsed_text().length() < 50): # checks if max answer length
 		answer.text += valid_keys_dict[OS.get_keycode_string(event.keycode)]
+	
+	# tap backspace to delete a single character
+	if event.is_action_pressed("backspace"):
+		delete_time = initial_delete_delay
+		deleteChar()
+
+# deleting a character
+func deleteChar() -> void:
+	answer.text = "[center]" + answer.get_parsed_text().substr(0, answer.get_parsed_text().length() - 1)

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://gjqri0x7oiwc"]
+
+[ext_resource type="FontFile" uid="uid://drbimbxjc68r0" path="res://Theme/Font/Kaph-Regular.ttf" id="1_h4fry"]
+
+[resource]
+default_font = ExtResource("1_h4fry")
+default_font_size = 72
