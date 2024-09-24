@@ -4,6 +4,7 @@ extends Control
 @onready var music = $Music
 
 @onready var correct = $"Sound Effects/Correct"
+@onready var wrong = $"Sound Effects/Wrong"
 
 var valid_keys_dict: Dictionary = {
 	"Q": "Q",
@@ -48,6 +49,7 @@ var valid_keys_dict: Dictionary = {
 	"Space": " ",
 }
 
+# songs selected prior to starting game
 var selected_songs_dict: Dictionary = {
 	"BURN": preload("res://Music/Kanye West/Vultures 1/BURN - Kanye West & Ty Dolla $ign (lyrics).mp3")
 }
@@ -93,7 +95,10 @@ func _input(event) -> void:
 	if event.is_action_pressed("return"):
 		if answer.get_parsed_text() == current_song:
 			correct.play()
-		print(answer.get_parsed_text())
+		else:
+			wrong.play()
+		
+		# resets text and plays next song
 		answer.text = "[center]"
 		pickSong()
 
@@ -101,10 +106,9 @@ func _input(event) -> void:
 func deleteChar() -> void:
 	answer.text = "[center]" + answer.get_parsed_text().substr(0, answer.get_parsed_text().length() - 1)
 
+# picks a new song
 func pickSong() -> void:
 	music.stop()
-	
 	current_song = selected_songs_dict.keys().pick_random()
 	music.stream = selected_songs_dict[current_song]
-	
 	music.play()

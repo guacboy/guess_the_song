@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv4ry2kapsokh"]
+[gd_scene load_steps=5 format=3 uid="uid://cv4ry2kapsokh"]
 
 [ext_resource type="Script" path="res://Interface/Gameplay/gameplay.gd" id="1_jit12"]
 [ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="2_845ft"]
-[ext_resource type="AudioStream" uid="uid://cvotl165yfq4q" path="res://Common/Sound/correct_answer_sound.mp3" id="3_mta7j"]
+[ext_resource type="AudioStream" uid="uid://cvotl165yfq4q" path="res://Common/Sound/correct_sound.mp3" id="3_mta7j"]
+[ext_resource type="AudioStream" uid="uid://cvfai1bpb1t7j" path="res://Common/Sound/wrong_sound.wav" id="4_da7ba"]
 
 [node name="Gameplay" type="Control"]
 layout_mode = 3
@@ -53,3 +54,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Correct" type="AudioStreamPlayer2D" parent="Sound Effects"]
 stream = ExtResource("3_mta7j")
 volume_db = 10.0
+
+[node name="Wrong" type="AudioStreamPlayer2D" parent="Sound Effects"]
+stream = ExtResource("4_da7ba")
