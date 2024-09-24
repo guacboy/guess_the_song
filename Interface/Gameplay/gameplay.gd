@@ -1,6 +1,9 @@
 extends Control
 
 @onready var answer = $Answer
+@onready var music = $Music
+
+@onready var correct = $"Sound Effects/Correct"
 
 var valid_keys_dict: Dictionary = {
 	"Q": "Q",
@@ -45,10 +48,18 @@ var valid_keys_dict: Dictionary = {
 	"Space": " ",
 }
 
+var selected_songs_dict: Dictionary = {
+	"BURN": preload("res://Music/Kanye West/Vultures 1/BURN - Kanye West & Ty Dolla $ign (lyrics).mp3")
+}
+var current_song: String
+
 var delete_time: float = 0.0
 var delete_interval: float = 0.1
 var initial_delete_delay: float = 0.3
 var is_backspace_held: bool = false
+
+func _ready() -> void:
+	pickSong()
 
 func _process(delta) -> void:
 	# hold backspace to delete multiple characters
@@ -71,12 +82,29 @@ func _input(event) -> void:
 	and OS.get_keycode_string(event.keycode) in valid_keys_dict # checks if valid key
 	and answer.get_parsed_text().length() < 50): # checks if max answer length
 		answer.text += valid_keys_dict[OS.get_keycode_string(event.keycode)]
+		music.stop()
 	
 	# tap backspace to delete a single character
 	if event.is_action_pressed("backspace"):
 		delete_time = initial_delete_delay
 		deleteChar()
+	
+	# checks answer
+	if event.is_action_pressed("return"):
+		if answer.get_parsed_text() == current_song:
+			correct.play()
+		print(answer.get_parsed_text())
+		answer.text = "[center]"
+		pickSong()
 
 # deleting a character
 func deleteChar() -> void:
 	answer.text = "[center]" + answer.get_parsed_text().substr(0, answer.get_parsed_text().length() - 1)
+
+func pickSong() -> void:
+	music.stop()
+	
+	current_song = selected_songs_dict.keys().pick_random()
+	music.stream = selected_songs_dict[current_song]
+	
+	music.play()
