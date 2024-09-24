@@ -3,3 +3,6 @@
 
 # ignores photoshop files
 **/*.psd
+
+# ignores music folder
+/Music
