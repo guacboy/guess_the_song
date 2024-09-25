@@ -1,5 +1,6 @@
 extends Control
 
+@onready var score = $Score
 @onready var answer = $Answer
 @onready var music = $Music
 
@@ -32,6 +33,7 @@ var valid_keys_dict: Dictionary = {
 	"V": "V",
 	"B": "B",
 	"N": "N",
+	"M": "M",
 	"1": "1",
 	"2": "2",
 	"3": "3",
@@ -55,13 +57,18 @@ var selected_songs_dict: Dictionary = {
 }
 var current_song: String
 
+# for tap vs hold backspace
 var delete_time: float = 0.0
 var delete_interval: float = 0.1
 var initial_delete_delay: float = 0.3
 var is_backspace_held: bool = false
 
+# scoring system
+var current_score: int = 0
+var combo: int = 0
+
 func _ready() -> void:
-	pickSong()
+	pick_song()
 
 func _process(delta) -> void:
 	# hold backspace to delete multiple characters
@@ -69,7 +76,7 @@ func _process(delta) -> void:
 		if is_backspace_held:
 			delete_time -= delta
 			if delete_time <= 0.0:
-				deleteChar()
+				delete_char()
 				delete_time = delete_interval
 		else:
 			delete_time -= delta
@@ -89,26 +96,61 @@ func _input(event) -> void:
 	# tap backspace to delete a single character
 	if event.is_action_pressed("backspace"):
 		delete_time = initial_delete_delay
-		deleteChar()
+		delete_char()
 	
 	# checks answer
 	if event.is_action_pressed("return"):
 		if answer.get_parsed_text() == current_song:
 			correct.play()
+			modify_combo(true)
+			increment_score()
 		else:
 			wrong.play()
+			modify_combo(false)
 		
 		# resets text and plays next song
 		answer.text = "[center]"
-		pickSong()
+		pick_song()
 
 # deleting a character
-func deleteChar() -> void:
+func delete_char() -> void:
 	answer.text = "[center]" + answer.get_parsed_text().substr(0, answer.get_parsed_text().length() - 1)
 
 # picks a new song
-func pickSong() -> void:
+func pick_song() -> void:
 	music.stop()
 	current_song = selected_songs_dict.keys().pick_random()
 	music.stream = selected_songs_dict[current_song]
 	music.play()
+
+func modify_combo(is_increment: bool) -> void:
+	combo += 1
+	
+	if !is_increment:
+		combo = 0
+
+func increment_score() -> void:
+	current_score += 100 * combo
+	
+	# allows for the zero placeholders on the left
+	var zero_placeholder: String = ""
+	if current_score >= 10000000:
+		pass
+	elif current_score >= 1000000:
+		zero_placeholder = "0"
+	elif current_score >= 100000:
+		zero_placeholder = "00"
+	elif current_score >= 10000:
+		zero_placeholder = "000"
+	elif current_score >= 1000:
+		zero_placeholder = "0000"
+	elif current_score >= 100:
+		zero_placeholder = "00000"
+	elif current_score >= 10:
+		zero_placeholder = "000000"
+	
+	# if player reaches max score, the score will cap
+	if current_score >= 99999900:
+		current_score = 99999900
+
+	score.text = zero_placeholder + str(current_score)
