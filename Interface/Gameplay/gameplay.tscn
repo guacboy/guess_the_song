@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cv4ry2kapsokh"]
+[gd_scene load_steps=9 format=3 uid="uid://cv4ry2kapsokh"]
 
 [ext_resource type="Script" path="res://Interface/Gameplay/gameplay.gd" id="1_jit12"]
 [ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="2_845ft"]
+[ext_resource type="Texture2D" uid="uid://cxpp4plboktgo" path="res://Interface/Gameplay/skip_icon.png" id="3_344g6"]
+[ext_resource type="Script" path="res://Interface/Gameplay/score.gd" id="3_cgiwg"]
+[ext_resource type="Texture2D" uid="uid://ufshrh3u8m6j" path="res://Interface/Gameplay/note_icon.png" id="3_kl7ux"]
 [ext_resource type="AudioStream" uid="uid://cvotl165yfq4q" path="res://Common/Sound/correct_sound.mp3" id="3_mta7j"]
 [ext_resource type="AudioStream" uid="uid://cvfai1bpb1t7j" path="res://Common/Sound/wrong_sound.wav" id="4_da7ba"]
+[ext_resource type="Script" path="res://Interface/Gameplay/answer.gd" id="4_qyg63"]
 
 [node name="Gameplay" type="Control"]
 layout_mode = 3
@@ -23,6 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="Score" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -34,10 +39,15 @@ anchor_bottom = 1.00093
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_845ft")
+theme_override_colors/font_shadow_color = Color(0.505882, 0.505882, 0.505882, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 5
 theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
 text = "00000000"
 fit_content = true
+script = ExtResource("3_cgiwg")
 metadata/_edit_use_anchors_ = true
 
 [node name="Answer" type="RichTextLabel" parent="."]
@@ -46,7 +56,7 @@ anchors_preset = -1
 anchor_left = 0.216667
 anchor_top = 0.414815
 anchor_right = 0.783333
-anchor_bottom = 0.533333
+anchor_bottom = 0.592593
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_845ft")
@@ -54,7 +64,62 @@ theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]"
 fit_content = true
+scroll_active = false
+script = ExtResource("4_qyg63")
 metadata/_edit_use_anchors_ = true
+
+[node name="Lives" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.283333
+anchor_top = 0.155556
+anchor_right = 0.723437
+anchor_bottom = 0.413889
+offset_right = 0.000732422
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Life1" type="TextureRect" parent="Lives"]
+layout_mode = 2
+texture = ExtResource("3_kl7ux")
+expand_mode = 3
+
+[node name="Life2" type="TextureRect" parent="Lives"]
+layout_mode = 2
+texture = ExtResource("3_kl7ux")
+expand_mode = 3
+
+[node name="Life3" type="TextureRect" parent="Lives"]
+layout_mode = 2
+texture = ExtResource("3_kl7ux")
+expand_mode = 3
+
+[node name="Skips" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.366667
+anchor_top = 0.585185
+anchor_right = 0.631771
+anchor_bottom = 0.739815
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Skip1" type="TextureRect" parent="Skips"]
+layout_mode = 2
+texture = ExtResource("3_344g6")
+expand_mode = 3
+
+[node name="Skip2" type="TextureRect" parent="Skips"]
+layout_mode = 2
+texture = ExtResource("3_344g6")
+expand_mode = 3
+
+[node name="Skip3" type="TextureRect" parent="Skips"]
+layout_mode = 2
+texture = ExtResource("3_344g6")
+expand_mode = 3
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 
