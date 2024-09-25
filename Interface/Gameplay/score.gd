@@ -7,7 +7,7 @@ var combo: int = 0
 func _ready():
 	Signals.connect("on_combo_increment", _on_combo_increment)
 	Signals.connect("on_score_increment", _on_score_increment)
-	
+
 func _on_combo_increment(is_increment: bool) -> void:
 	combo += 1
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cv4ry2kapsokh"]
+[gd_scene load_steps=10 format=3 uid="uid://cv4ry2kapsokh"]
 
 [ext_resource type="Script" path="res://Interface/Gameplay/gameplay.gd" id="1_jit12"]
 [ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="2_845ft"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cvotl165yfq4q" path="res://Common/Sound/correct_sound.mp3" id="3_mta7j"]
 [ext_resource type="AudioStream" uid="uid://cvfai1bpb1t7j" path="res://Common/Sound/wrong_sound.wav" id="4_da7ba"]
 [ext_resource type="Script" path="res://Interface/Gameplay/answer.gd" id="4_qyg63"]
+[ext_resource type="Script" path="res://Interface/Gameplay/music.gd" id="7_eem60"]
 
 [node name="Gameplay" type="Control"]
 layout_mode = 3
@@ -122,6 +123,7 @@ texture = ExtResource("3_344g6")
 expand_mode = 3
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("7_eem60")
 
 [node name="Sound Effects" type="Node" parent="."]
 
