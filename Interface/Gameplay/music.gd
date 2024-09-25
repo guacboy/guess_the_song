@@ -1,6 +1,7 @@
 extends AudioStreamPlayer2D
 
 @export var current_song: String
+@onready var song_duration = $SongDuration
 
 # songs selected prior to starting game
 var selected_songs_dict: Dictionary = {
@@ -10,8 +11,15 @@ var selected_songs_dict: Dictionary = {
 func _ready() -> void:
 	Signals.connect("on_new_song", _on_new_song)
 
-func _on_new_song() -> void:
-	stop()
+func _on_new_song(difficulty_duration: float) -> void:
+	stop() # stops any previous songs
 	current_song = selected_songs_dict.keys().pick_random()
 	stream = selected_songs_dict[current_song]
 	play()
+	
+	song_duration.stop() # stops any previous timers
+	song_duration.wait_time = difficulty_duration
+	song_duration.start()
+
+func _on_song_duration_timeout():
+	stop()

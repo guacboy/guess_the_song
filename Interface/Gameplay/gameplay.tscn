@@ -127,12 +127,17 @@ expand_mode = 3
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("7_eem60")
 
-[node name="Sound Effects" type="Node" parent="."]
+[node name="SongDuration" type="Timer" parent="Music"]
+one_shot = true
 
-[node name="Correct" type="AudioStreamPlayer2D" parent="Sound Effects"]
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="Correct" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource("3_mta7j")
 volume_db = 10.0
 
-[node name="Wrong" type="AudioStreamPlayer2D" parent="Sound Effects"]
+[node name="Wrong" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource("4_da7ba")
 volume_db = 5.0
+
+[connection signal="timeout" from="Music/SongDuration" to="Music" method="_on_song_duration_timeout"]

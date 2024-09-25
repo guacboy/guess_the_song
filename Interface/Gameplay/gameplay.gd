@@ -2,16 +2,20 @@ extends Control
 
 @onready var answer = $Answer
 @onready var music = $Music
+@onready var song_duration = $Music/SongDuration
 
+# status
 @onready var lives = $Status/Lives
 @onready var skips = $Status/Skips
 
 # sound effects
-@onready var correct = $"Sound Effects/Correct"
-@onready var wrong = $"Sound Effects/Wrong"
+@onready var correct = $SoundEffects/Correct
+@onready var wrong = $SoundEffects/Wrong
+
+var difficulty_duration: float = 7.0
 
 func _ready() -> void:
-	Signals.emit_signal("on_new_song")
+	Signals.emit_signal("on_new_song", difficulty_duration)
 
 func _input(event) -> void:
 	if event.is_action_pressed("return") or event.is_action_pressed("skip"):
@@ -33,4 +37,4 @@ func _input(event) -> void:
 		
 		# resets text and plays next song
 		answer.text = "[center]"
-		Signals.emit_signal("on_new_song")
+		Signals.emit_signal("on_new_song", difficulty_duration)
