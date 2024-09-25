@@ -5,4 +5,4 @@
 **/*.psd
 
 # ignores music folder
-/Music
+Music/**
