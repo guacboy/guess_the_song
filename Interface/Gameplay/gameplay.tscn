@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cv4ry2kapsokh"]
+[gd_scene load_steps=12 format=3 uid="uid://cv4ry2kapsokh"]
 
 [ext_resource type="Script" path="res://Interface/Gameplay/gameplay.gd" id="1_jit12"]
 [ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="2_845ft"]
+[ext_resource type="Script" path="res://Interface/Gameplay/round.gd" id="3_15iak"]
 [ext_resource type="Texture2D" uid="uid://cxpp4plboktgo" path="res://Interface/Gameplay/skip_icon.png" id="3_344g6"]
 [ext_resource type="Script" path="res://Interface/Gameplay/score.gd" id="3_cgiwg"]
 [ext_resource type="Texture2D" uid="uid://ufshrh3u8m6j" path="res://Interface/Gameplay/note_icon.png" id="3_kl7ux"]
@@ -30,6 +31,26 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
+
+[node name="Round" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4625
+anchor_top = 0.0148148
+anchor_right = 0.566667
+anchor_bottom = 0.121296
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_845ft")
+theme_override_colors/font_shadow_color = Color(0.505882, 0.505882, 0.505882, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/normal_font_size = 100
+text = "60"
+fit_content = true
+script = ExtResource("3_15iak")
+metadata/_edit_use_anchors_ = true
 
 [node name="Score" type="RichTextLabel" parent="."]
 layout_mode = 1
