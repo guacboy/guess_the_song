@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cv4ry2kapsokh"]
+[gd_scene load_steps=11 format=3 uid="uid://cv4ry2kapsokh"]
 
 [ext_resource type="Script" path="res://Interface/Gameplay/gameplay.gd" id="1_jit12"]
 [ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="2_845ft"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cvotl165yfq4q" path="res://Common/Sound/correct_sound.mp3" id="3_mta7j"]
 [ext_resource type="AudioStream" uid="uid://cvfai1bpb1t7j" path="res://Common/Sound/wrong_sound.wav" id="4_da7ba"]
 [ext_resource type="Script" path="res://Interface/Gameplay/answer.gd" id="4_qyg63"]
+[ext_resource type="Script" path="res://Interface/Gameplay/status.gd" id="5_r0cem"]
 [ext_resource type="Script" path="res://Interface/Gameplay/music.gd" id="7_eem60"]
 
 [node name="Gameplay" type="Control"]
@@ -69,8 +70,10 @@ scroll_active = false
 script = ExtResource("4_qyg63")
 metadata/_edit_use_anchors_ = true
 
-[node name="Lives" type="HBoxContainer" parent="."]
-layout_mode = 1
+[node name="Status" type="Node" parent="."]
+script = ExtResource("5_r0cem")
+
+[node name="Lives" type="HBoxContainer" parent="Status"]
 anchors_preset = -1
 anchor_left = 0.283333
 anchor_top = 0.155556
@@ -81,23 +84,22 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Life1" type="TextureRect" parent="Lives"]
+[node name="Life1" type="TextureRect" parent="Status/Lives"]
 layout_mode = 2
 texture = ExtResource("3_kl7ux")
 expand_mode = 3
 
-[node name="Life2" type="TextureRect" parent="Lives"]
+[node name="Life2" type="TextureRect" parent="Status/Lives"]
 layout_mode = 2
 texture = ExtResource("3_kl7ux")
 expand_mode = 3
 
-[node name="Life3" type="TextureRect" parent="Lives"]
+[node name="Life3" type="TextureRect" parent="Status/Lives"]
 layout_mode = 2
 texture = ExtResource("3_kl7ux")
 expand_mode = 3
 
-[node name="Skips" type="HBoxContainer" parent="."]
-layout_mode = 1
+[node name="Skips" type="HBoxContainer" parent="Status"]
 anchors_preset = -1
 anchor_left = 0.366667
 anchor_top = 0.585185
@@ -107,17 +109,17 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Skip1" type="TextureRect" parent="Skips"]
+[node name="Skip1" type="TextureRect" parent="Status/Skips"]
 layout_mode = 2
 texture = ExtResource("3_344g6")
 expand_mode = 3
 
-[node name="Skip2" type="TextureRect" parent="Skips"]
+[node name="Skip2" type="TextureRect" parent="Status/Skips"]
 layout_mode = 2
 texture = ExtResource("3_344g6")
 expand_mode = 3
 
-[node name="Skip3" type="TextureRect" parent="Skips"]
+[node name="Skip3" type="TextureRect" parent="Status/Skips"]
 layout_mode = 2
 texture = ExtResource("3_344g6")
 expand_mode = 3
@@ -133,3 +135,4 @@ volume_db = 10.0
 
 [node name="Wrong" type="AudioStreamPlayer2D" parent="Sound Effects"]
 stream = ExtResource("4_da7ba")
+volume_db = 5.0

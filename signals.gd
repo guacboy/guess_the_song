@@ -1,7 +1,6 @@
 extends Node
 
-signal on_life_decrement()
-signal on_skip_decrement()
+signal on_status_decrement(status_type)
 
 signal on_combo_increment(is_increment)
 signal on_score_increment()
