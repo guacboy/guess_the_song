@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Interface/Gameplay/gameplay.gd" id="1_jit12"]
 [ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="2_845ft"]
 [ext_resource type="Script" path="res://Interface/Gameplay/round.gd" id="3_15iak"]
-[ext_resource type="Texture2D" uid="uid://cxpp4plboktgo" path="res://Interface/Gameplay/skip_icon.png" id="3_344g6"]
+[ext_resource type="Texture2D" uid="uid://cxpp4plboktgo" path="res://Interface/Gameplay/Assets/skip_icon.png" id="3_344g6"]
 [ext_resource type="Script" path="res://Interface/Gameplay/score.gd" id="3_cgiwg"]
-[ext_resource type="Texture2D" uid="uid://ufshrh3u8m6j" path="res://Interface/Gameplay/note_icon.png" id="3_kl7ux"]
+[ext_resource type="Texture2D" uid="uid://ufshrh3u8m6j" path="res://Interface/Gameplay/Assets/note_icon.png" id="3_kl7ux"]
 [ext_resource type="AudioStream" uid="uid://cvotl165yfq4q" path="res://Common/Sound/correct_sound.mp3" id="3_mta7j"]
 [ext_resource type="AudioStream" uid="uid://cvfai1bpb1t7j" path="res://Common/Sound/wrong_sound.wav" id="4_da7ba"]
 [ext_resource type="Script" path="res://Interface/Gameplay/answer.gd" id="4_qyg63"]
@@ -51,6 +51,7 @@ text = "60"
 fit_content = true
 script = ExtResource("3_15iak")
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Score" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -72,6 +73,7 @@ text = "00000000"
 fit_content = true
 script = ExtResource("3_cgiwg")
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Answer" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -90,6 +92,7 @@ fit_content = true
 scroll_active = false
 script = ExtResource("4_qyg63")
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Status" type="Node" parent="."]
 script = ExtResource("5_r0cem")
