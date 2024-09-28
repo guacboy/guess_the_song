@@ -2,7 +2,7 @@ extends CheckBox
 
 @onready var songs = $"../../Songs"
 
-func _on_toggled(toggled_on):
+func _on_toggled(toggled_on) -> void:
 	if toggled_on:
 		# gets all the songs from the album
 		for song_box in songs.get_children():

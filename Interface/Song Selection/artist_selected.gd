@@ -2,7 +2,7 @@ extends CheckBox
 
 @onready var albums = $"../../Albums"
 
-func _on_toggled(toggled_on):
+func _on_toggled(toggled_on) -> void:
 	# gets the entire discovery of the artist
 	if toggled_on:
 		# gets all the albums

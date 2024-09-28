@@ -86,6 +86,7 @@ script = ExtResource("4_u76dc")
 metadata/_edit_use_anchors_ = true
 
 [node name="Albums" type="VBoxContainer" parent="Artist/Artist4"]
+visible = false
 layout_mode = 2
 
 [node name="AlbumCover" type="TextureButton" parent="Artist/Artist4/Albums"]
@@ -124,6 +125,7 @@ script = ExtResource("6_hsvr6")
 metadata/_edit_use_anchors_ = true
 
 [node name="Songs" type="VBoxContainer" parent="Artist/Artist4/Albums"]
+visible = false
 layout_mode = 2
 
 [node name="SongBox1" type="HBoxContainer" parent="Artist/Artist4/Albums/Songs"]
