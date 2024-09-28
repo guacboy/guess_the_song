@@ -1,13 +1,8 @@
 extends AudioStreamPlayer2D
 
-@export var current_song: String
 @onready var song_duration = $SongDuration
 
-# songs selected prior to starting game
-var selected_songs_dict: Dictionary = {
-	"BURN": preload("res://Music/Kanye West/Vultures 1/BURN - Kanye West & Ty Dolla $ign (lyrics).mp3"),
-	"BEG FORGIVENESS": preload("res://Music/Kanye West/Vultures 1/Kanye West - Beg Forgiveness (Lyrics) ft. Ty Dolla $ign, Chris Brown.mp3")
-}
+@export var current_song: String
 
 var next_cnt: int = 1
 
@@ -28,8 +23,8 @@ func _on_new_song(difficulty_duration: float) -> void:
 	next_cnt = 1 # resets count
 	
 	stop() # stops any previous songs
-	current_song = selected_songs_dict.keys().pick_random()
-	stream = selected_songs_dict[current_song]
+	current_song = Data.selected_songs_dict.keys().pick_random()
+	stream = Data.selected_songs_dict[current_song]
 	play()
 	
 	song_duration.stop() # stops any previous timers

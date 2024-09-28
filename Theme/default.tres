@@ -1,7 +1,19 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://gjqri0x7oiwc"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://gjqri0x7oiwc"]
 
 [ext_resource type="FontFile" uid="uid://drbimbxjc68r0" path="res://Theme/Font/Kaph-Regular.ttf" id="1_h4fry"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sls1d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o38a3"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 32
+corner_radius_bottom_left = 32
 
 [resource]
 default_font = ExtResource("1_h4fry")
 default_font_size = 72
+Button/styles/focus = SubResource("StyleBoxEmpty_sls1d")
+Button/styles/normal = SubResource("StyleBoxFlat_o38a3")

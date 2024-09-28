@@ -1,0 +1,167 @@
+[gd_scene load_steps=12 format=3 uid="uid://cv4ry2kapsokh"]
+
+[ext_resource type="Script" path="res://Interface/Gameplay/gameplay.gd" id="1_jit12"]
+[ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="2_845ft"]
+[ext_resource type="Script" path="res://Interface/Gameplay/round.gd" id="3_15iak"]
+[ext_resource type="Texture2D" uid="uid://cxpp4plboktgo" path="res://Interface/Gameplay/Assets/skip_icon.png" id="3_344g6"]
+[ext_resource type="Script" path="res://Interface/Gameplay/score.gd" id="3_cgiwg"]
+[ext_resource type="Texture2D" uid="uid://ufshrh3u8m6j" path="res://Interface/Gameplay/Assets/note_icon.png" id="3_kl7ux"]
+[ext_resource type="AudioStream" uid="uid://cvotl165yfq4q" path="res://Common/Sound/correct_sound.mp3" id="3_mta7j"]
+[ext_resource type="AudioStream" uid="uid://cvfai1bpb1t7j" path="res://Common/Sound/wrong_sound.wav" id="4_da7ba"]
+[ext_resource type="Script" path="res://Interface/Gameplay/answer.gd" id="4_qyg63"]
+[ext_resource type="Script" path="res://Interface/Gameplay/status.gd" id="5_r0cem"]
+[ext_resource type="Script" path="res://Interface/Gameplay/music.gd" id="7_eem60"]
+
+[node name="Gameplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jit12")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Round" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4625
+anchor_top = 0.0148148
+anchor_right = 0.566667
+anchor_bottom = 0.121296
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_845ft")
+theme_override_colors/font_shadow_color = Color(0.505882, 0.505882, 0.505882, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/normal_font_size = 100
+text = "60"
+fit_content = true
+script = ExtResource("3_15iak")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Score" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00260417
+anchor_top = 0.915741
+anchor_right = 1.0026
+anchor_bottom = 1.00093
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_845ft")
+theme_override_colors/font_shadow_color = Color(0.505882, 0.505882, 0.505882, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "00000000"
+fit_content = true
+script = ExtResource("3_cgiwg")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Answer" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.216667
+anchor_top = 0.414815
+anchor_right = 0.783333
+anchor_bottom = 0.592593
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_845ft")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]"
+fit_content = true
+scroll_active = false
+script = ExtResource("4_qyg63")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Status" type="Node" parent="."]
+script = ExtResource("5_r0cem")
+
+[node name="Lives" type="HBoxContainer" parent="Status"]
+anchors_preset = -1
+anchor_left = 0.283333
+anchor_top = 0.155556
+anchor_right = 0.723437
+anchor_bottom = 0.413889
+offset_right = 0.000732422
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Life1" type="TextureRect" parent="Status/Lives"]
+layout_mode = 2
+texture = ExtResource("3_kl7ux")
+expand_mode = 3
+
+[node name="Life2" type="TextureRect" parent="Status/Lives"]
+layout_mode = 2
+texture = ExtResource("3_kl7ux")
+expand_mode = 3
+
+[node name="Life3" type="TextureRect" parent="Status/Lives"]
+layout_mode = 2
+texture = ExtResource("3_kl7ux")
+expand_mode = 3
+
+[node name="Skips" type="HBoxContainer" parent="Status"]
+anchors_preset = -1
+anchor_left = 0.366667
+anchor_top = 0.585185
+anchor_right = 0.631771
+anchor_bottom = 0.739815
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Skip1" type="TextureRect" parent="Status/Skips"]
+layout_mode = 2
+texture = ExtResource("3_344g6")
+expand_mode = 3
+
+[node name="Skip2" type="TextureRect" parent="Status/Skips"]
+layout_mode = 2
+texture = ExtResource("3_344g6")
+expand_mode = 3
+
+[node name="Skip3" type="TextureRect" parent="Status/Skips"]
+layout_mode = 2
+texture = ExtResource("3_344g6")
+expand_mode = 3
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("7_eem60")
+
+[node name="SongDuration" type="Timer" parent="Music"]
+one_shot = true
+
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="Correct" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("3_mta7j")
+volume_db = 10.0
+
+[node name="Wrong" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("4_da7ba")
+volume_db = 5.0
+
+[connection signal="timeout" from="Music/SongDuration" to="Music" method="_on_song_duration_timeout"]

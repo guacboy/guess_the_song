@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf61dt7x1muc4"]
+[gd_scene load_steps=9 format=3 uid="uid://bf61dt7x1muc4"]
 
 [ext_resource type="Texture2D" uid="uid://bp7j7utc1x2tc" path="res://Interface/Song Selection/Assets/Artist Profiles/Kanye West/kanye_west_pfp.png" id="1_glfhw"]
 [ext_resource type="Script" path="res://Interface/Song Selection/artist_profile.gd" id="2_6kud4"]
 [ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="2_7gqkp"]
 [ext_resource type="Texture2D" uid="uid://3tgta3epwgbf" path="res://Interface/Song Selection/Assets/Album Cover/Kanye West/Vultures 1/vultures_1_cover.png" id="4_k0ui4"]
 [ext_resource type="Script" path="res://Interface/Song Selection/album_cover.gd" id="5_4ggug"]
+[ext_resource type="Script" path="res://Interface/Song Selection/song_selected.gd" id="6_wjtoa"]
+[ext_resource type="AudioStream" uid="uid://dx0uetvd0djtl" path="res://Music/Kanye West/Vultures 1/BURN - Kanye West & Ty Dolla $ign (lyrics).mp3" id="7_cggoi"]
+[ext_resource type="Script" path="res://Interface/Song Selection/ready.gd" id="9_3xl64"]
 
 [node name="SongSelection" type="Control"]
 layout_mode = 3
@@ -67,7 +70,7 @@ text = "KANYE WEST"
 fit_content = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Selected" type="CheckBox" parent="Artist/Artist4/ArtistProfile"]
+[node name="ArtistSelected" type="CheckBox" parent="Artist/Artist4/ArtistProfile"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.87485
@@ -105,7 +108,7 @@ text = "VULTURES 1"
 fit_content = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Selected" type="CheckBox" parent="Artist/Artist4/Albums/AlbumCover"]
+[node name="AlbumSelected" type="CheckBox" parent="Artist/Artist4/Albums/AlbumCover"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.87485
@@ -131,10 +134,14 @@ text = " BURN"
 fit_content = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Selected" type="CheckBox" parent="Artist/Artist4/Albums/Songs/SongBox"]
+[node name="SongSelected" type="CheckBox" parent="Artist/Artist4/Albums/Songs/SongBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.14
+script = ExtResource("6_wjtoa")
+song_selected_ID = {
+"BURN": ExtResource("7_cggoi")
+}
 metadata/_edit_use_anchors_ = true
 
 [node name="Artist5" type="VBoxContainer" parent="Artist"]
@@ -151,5 +158,21 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
+[node name="Ready" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.82963
+anchor_right = 1.0
+anchor_bottom = 0.948148
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_7gqkp")
+text = "READY	"
+script = ExtResource("9_3xl64")
+metadata/_edit_use_anchors_ = true
+
 [connection signal="toggled" from="Artist/Artist4/ArtistProfile" to="Artist/Artist4/ArtistProfile" method="_on_toggled"]
 [connection signal="toggled" from="Artist/Artist4/Albums/AlbumCover" to="Artist/Artist4/Albums/AlbumCover" method="_on_toggled"]
+[connection signal="toggled" from="Artist/Artist4/Albums/Songs/SongBox/SongSelected" to="Artist/Artist4/Albums/Songs/SongBox/SongSelected" method="_on_toggled"]
+[connection signal="pressed" from="Ready" to="Ready" method="_on_pressed"]
