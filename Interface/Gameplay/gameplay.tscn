@@ -32,12 +32,12 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="Round" type="RichTextLabel" parent="."]
+[node name="RoundTimer" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4625
 anchor_top = 0.0148148
-anchor_right = 0.566667
+anchor_right = 0.591667
 anchor_bottom = 0.121296
 grow_horizontal = 2
 grow_vertical = 2
@@ -45,13 +45,12 @@ theme = ExtResource("2_845ft")
 theme_override_colors/font_shadow_color = Color(0.505882, 0.505882, 0.505882, 1)
 theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_outline_size = 5
+theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/normal_font_size = 100
 text = "60"
 fit_content = true
 script = ExtResource("3_15iak")
 metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
 
 [node name="Score" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -66,7 +65,7 @@ theme = ExtResource("2_845ft")
 theme_override_colors/font_shadow_color = Color(0.505882, 0.505882, 0.505882, 1)
 theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_outline_size = 5
+theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
 text = "00000000"
