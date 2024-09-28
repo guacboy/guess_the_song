@@ -1,13 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf61dt7x1muc4"]
+[gd_scene load_steps=12 format=3 uid="uid://bf61dt7x1muc4"]
 
 [ext_resource type="Texture2D" uid="uid://bp7j7utc1x2tc" path="res://Interface/Song Selection/Assets/Artist Profiles/Kanye West/kanye_west_pfp.png" id="1_glfhw"]
 [ext_resource type="Script" path="res://Interface/Song Selection/artist_profile.gd" id="2_6kud4"]
 [ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="2_7gqkp"]
 [ext_resource type="Texture2D" uid="uid://3tgta3epwgbf" path="res://Interface/Song Selection/Assets/Album Cover/Kanye West/Vultures 1/vultures_1_cover.png" id="4_k0ui4"]
+[ext_resource type="Script" path="res://Interface/Song Selection/artist_selected.gd" id="4_u76dc"]
 [ext_resource type="Script" path="res://Interface/Song Selection/album_cover.gd" id="5_4ggug"]
+[ext_resource type="Script" path="res://Interface/Song Selection/album_selected.gd" id="6_hsvr6"]
 [ext_resource type="Script" path="res://Interface/Song Selection/song_selected.gd" id="6_wjtoa"]
 [ext_resource type="AudioStream" uid="uid://dx0uetvd0djtl" path="res://Music/Kanye West/Vultures 1/BURN - Kanye West & Ty Dolla $ign (lyrics).mp3" id="7_cggoi"]
 [ext_resource type="Script" path="res://Interface/Song Selection/ready.gd" id="9_3xl64"]
+[ext_resource type="AudioStream" uid="uid://37ikamjxeqdw" path="res://Music/Kanye West/Vultures 1/Kanye West - Beg Forgiveness (Lyrics) ft. Ty Dolla $ign, Chris Brown.mp3" id="10_1pwcy"]
 
 [node name="SongSelection" type="Control"]
 layout_mode = 3
@@ -79,10 +82,10 @@ anchor_right = 1.0
 anchor_bottom = 0.684211
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_u76dc")
 metadata/_edit_use_anchors_ = true
 
 [node name="Albums" type="VBoxContainer" parent="Artist/Artist4"]
-visible = false
 layout_mode = 2
 
 [node name="AlbumCover" type="TextureButton" parent="Artist/Artist4/Albums"]
@@ -117,30 +120,55 @@ anchor_right = 1.0
 anchor_bottom = 0.684211
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("6_hsvr6")
 metadata/_edit_use_anchors_ = true
 
 [node name="Songs" type="VBoxContainer" parent="Artist/Artist4/Albums"]
-visible = false
 layout_mode = 2
 
-[node name="SongBox" type="HBoxContainer" parent="Artist/Artist4/Albums/Songs"]
+[node name="SongBox1" type="HBoxContainer" parent="Artist/Artist4/Albums/Songs"]
 layout_mode = 2
 
-[node name="Burn" type="RichTextLabel" parent="Artist/Artist4/Albums/Songs/SongBox"]
+[node name="Burn" type="RichTextLabel" parent="Artist/Artist4/Albums/Songs/SongBox1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_7gqkp")
+theme_override_font_sizes/normal_font_size = 40
 text = " BURN"
 fit_content = true
 metadata/_edit_use_anchors_ = true
 
-[node name="SongSelected" type="CheckBox" parent="Artist/Artist4/Albums/Songs/SongBox"]
+[node name="SongSelected" type="CheckBox" parent="Artist/Artist4/Albums/Songs/SongBox1"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.14
 script = ExtResource("6_wjtoa")
 song_selected_ID = {
 "BURN": ExtResource("7_cggoi")
+}
+metadata/_edit_use_anchors_ = true
+
+[node name="SongBox2" type="HBoxContainer" parent="Artist/Artist4/Albums/Songs"]
+layout_mode = 2
+
+[node name="Beg Forgiveness" type="RichTextLabel" parent="Artist/Artist4/Albums/Songs/SongBox2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_7gqkp")
+theme_override_font_sizes/normal_font_size = 40
+text = " BEG FORGIVENESS"
+fit_content = true
+autowrap_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="SongSelected" type="CheckBox" parent="Artist/Artist4/Albums/Songs/SongBox2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.14
+disabled = true
+script = ExtResource("6_wjtoa")
+song_selected_ID = {
+"BEG FORGIVENESS": ExtResource("10_1pwcy")
 }
 metadata/_edit_use_anchors_ = true
 
@@ -173,6 +201,9 @@ script = ExtResource("9_3xl64")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="toggled" from="Artist/Artist4/ArtistProfile" to="Artist/Artist4/ArtistProfile" method="_on_toggled"]
+[connection signal="toggled" from="Artist/Artist4/ArtistProfile/ArtistSelected" to="Artist/Artist4/ArtistProfile/ArtistSelected" method="_on_toggled"]
 [connection signal="toggled" from="Artist/Artist4/Albums/AlbumCover" to="Artist/Artist4/Albums/AlbumCover" method="_on_toggled"]
-[connection signal="toggled" from="Artist/Artist4/Albums/Songs/SongBox/SongSelected" to="Artist/Artist4/Albums/Songs/SongBox/SongSelected" method="_on_toggled"]
+[connection signal="toggled" from="Artist/Artist4/Albums/AlbumCover/AlbumSelected" to="Artist/Artist4/Albums/AlbumCover/AlbumSelected" method="_on_toggled"]
+[connection signal="toggled" from="Artist/Artist4/Albums/Songs/SongBox1/SongSelected" to="Artist/Artist4/Albums/Songs/SongBox1/SongSelected" method="_on_toggled"]
+[connection signal="toggled" from="Artist/Artist4/Albums/Songs/SongBox2/SongSelected" to="Artist/Artist4/Albums/Songs/SongBox2/SongSelected" method="_on_toggled"]
 [connection signal="pressed" from="Ready" to="Ready" method="_on_pressed"]
