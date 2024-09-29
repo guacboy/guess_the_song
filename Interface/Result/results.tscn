@@ -1,0 +1,147 @@
+[gd_scene load_steps=5 format=3 uid="uid://dss3vtt6dfb86"]
+
+[ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="1_5uloa"]
+[ext_resource type="Script" path="res://Interface/Result/score.gd" id="1_8r26w"]
+[ext_resource type="Script" path="res://Interface/Result/main_menu.gd" id="3_yvhqc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bka6x"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+
+[node name="Results" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Node" parent="."]
+script = ExtResource("1_8r26w")
+
+[node name="Grade" type="TextureRect" parent="Score"]
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.022
+anchor_right = 0.300333
+anchor_bottom = 0.452259
+offset_left = 0.639999
+offset_top = 0.239998
+offset_right = -0.640015
+offset_bottom = -0.440002
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TotalText" type="RichTextLabel" parent="Score"]
+anchors_preset = -1
+anchor_left = 0.0163333
+anchor_top = 0.473852
+anchor_right = 0.1665
+anchor_bottom = 0.538667
+offset_left = 0.639999
+offset_top = 0.239998
+offset_right = 0.32
+offset_bottom = 0.239929
+theme = ExtResource("1_5uloa")
+text = "TOTAL"
+fit_content = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TotalValue" type="RichTextLabel" parent="Score"]
+anchors_preset = -1
+anchor_left = 0.221
+anchor_top = 0.474
+anchor_right = 0.333
+anchor_bottom = 0.538667
+offset_left = -0.320038
+offset_top = 0.0799561
+offset_right = 0.640015
+offset_bottom = 0.239929
+theme = ExtResource("1_5uloa")
+text = "555"
+fit_content = true
+text_direction = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CorrectText" type="RichTextLabel" parent="Score"]
+anchors_preset = -1
+anchor_left = 0.017
+anchor_top = 0.556
+anchor_right = 0.204
+anchor_bottom = 0.615
+offset_left = -0.640003
+offset_top = -0.480042
+offset_right = 0.320007
+offset_bottom = 5.79999
+theme = ExtResource("1_5uloa")
+text = "CORRECT"
+fit_content = true
+metadata/_edit_use_anchors_ = true
+
+[node name="CorrectValue" type="RichTextLabel" parent="Score"]
+anchors_preset = -1
+anchor_left = 0.221
+anchor_top = 0.556
+anchor_right = 0.333
+anchor_bottom = 0.62
+offset_left = -0.320038
+offset_top = -0.480042
+offset_right = 0.640076
+offset_bottom = 0.400024
+theme = ExtResource("1_5uloa")
+text = "55"
+fit_content = true
+text_direction = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MissedText" type="RichTextLabel" parent="Score"]
+anchors_preset = -1
+anchor_left = 0.017
+anchor_top = 0.637
+anchor_right = 0.167
+anchor_bottom = 0.702
+offset_left = -0.640003
+offset_top = 0.039978
+offset_right = -0.640015
+offset_bottom = -0.160034
+theme = ExtResource("1_5uloa")
+text = "MISS"
+fit_content = true
+metadata/_edit_use_anchors_ = true
+
+[node name="MissedValue" type="RichTextLabel" parent="Score"]
+anchors_preset = -1
+anchor_left = 0.221
+anchor_top = 0.637
+anchor_right = 0.333
+anchor_bottom = 0.702
+offset_left = -0.320038
+offset_top = 0.039978
+offset_right = 0.640015
+offset_bottom = -0.160034
+theme = ExtResource("1_5uloa")
+text = "5"
+fit_content = true
+text_direction = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MainMenu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.82963
+anchor_right = 0.3
+anchor_bottom = 0.948148
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5uloa")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bka6x")
+text = "Main Menu"
+script = ExtResource("3_yvhqc")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="MainMenu" to="MainMenu" method="_on_pressed"]

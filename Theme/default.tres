@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://gjqri0x7oiwc"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://gjqri0x7oiwc"]
 
 [ext_resource type="FontFile" uid="uid://drbimbxjc68r0" path="res://Theme/Font/Kaph-Regular.ttf" id="1_h4fry"]
 
@@ -12,8 +12,15 @@ border_width_bottom = 2
 corner_radius_top_left = 32
 corner_radius_bottom_left = 32
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7gfr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tc52w"]
+bg_color = Color(0.834614, 0.834614, 0.834614, 1)
+
 [resource]
 default_font = ExtResource("1_h4fry")
 default_font_size = 60
 Button/styles/focus = SubResource("StyleBoxEmpty_sls1d")
 Button/styles/normal = SubResource("StyleBoxFlat_o38a3")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_l7gfr")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_tc52w")

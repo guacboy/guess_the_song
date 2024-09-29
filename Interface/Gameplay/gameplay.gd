@@ -14,6 +14,10 @@ extends Control
 
 func _ready() -> void:
 	Signals.emit_signal("on_new_song", Data.difficulty_duration)
+	
+	Data.total_songs = Data.selected_songs_dict.size()
+	Data.correct_songs = 0
+	Data.missed_songs = 0
 
 func _input(event) -> void:
 	if event.is_action_pressed("return") or event.is_action_pressed("skip"):
@@ -24,10 +28,12 @@ func _input(event) -> void:
 				correct.play()
 				Signals.emit_signal("on_combo_increment", true)
 				Signals.emit_signal("on_score_increment")
+				Data.correct_songs += 1
 			else:
 				wrong.play()
 				Signals.emit_signal("on_combo_increment", false)
-				Signals.emit_signal("on_status_decrement", lives)
+				#Signals.emit_signal("on_status_decrement", lives)
+				Data.missed_songs += 1
 		# otherwise, skips song
 		else:
 			Signals.emit_signal("on_combo_increment", false)
