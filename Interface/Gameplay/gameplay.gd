@@ -12,10 +12,8 @@ extends Control
 @onready var correct = $SoundEffects/Correct
 @onready var wrong = $SoundEffects/Wrong
 
-var difficulty_duration: float = 7.0
-
 func _ready() -> void:
-	Signals.emit_signal("on_new_song", difficulty_duration)
+	Signals.emit_signal("on_new_song", Data.difficulty_duration)
 
 func _input(event) -> void:
 	if event.is_action_pressed("return") or event.is_action_pressed("skip"):
@@ -37,4 +35,4 @@ func _input(event) -> void:
 		
 		# resets text and plays next song
 		answer.text = "[center]"
-		Signals.emit_signal("on_new_song", difficulty_duration)
+		Signals.emit_signal("on_new_song", Data.difficulty_duration)

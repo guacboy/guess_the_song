@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://khylkgech21n"]
+
+[ext_resource type="Script" path="res://Interface/Difficulty Selection/difficulty.gd" id="1_f2bk7"]
+[ext_resource type="Texture2D" uid="uid://cmsauwc0dw5gu" path="res://Interface/Difficulty Selection/Assets/baby_button.png" id="1_jjmpb"]
+[ext_resource type="Texture2D" uid="uid://cfwifynu0b8wt" path="res://Interface/Difficulty Selection/Assets/avid_button.png" id="2_jp0m5"]
+[ext_resource type="Texture2D" uid="uid://b2b5fupd18ya6" path="res://Interface/Difficulty Selection/Assets/fan_button.png" id="3_hdqyq"]
+[ext_resource type="Texture2D" uid="uid://c86k0cti5ik8h" path="res://Interface/Difficulty Selection/Assets/stan_button.png" id="4_x8lp7"]
+[ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="5_ywp2m"]
+[ext_resource type="Script" path="res://Interface/Difficulty Selection/start.gd" id="6_rs6w1"]
+
+[node name="DifficultySelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Difficulty" type="Node" parent="."]
+script = ExtResource("1_f2bk7")
+
+[node name="Baby" type="TextureButton" parent="Difficulty"]
+anchors_preset = -1
+anchor_left = 0.317
+anchor_top = 0.415
+anchor_right = 0.383
+anchor_bottom = 0.533333
+offset_left = -0.640015
+offset_top = -0.199799
+offset_right = 0.638672
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_jjmpb")
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="Avid" type="TextureButton" parent="Difficulty"]
+anchors_preset = -1
+anchor_left = 0.417
+anchor_top = 0.415
+anchor_right = 0.483
+anchor_bottom = 0.533333
+offset_left = -0.640747
+offset_top = -0.199799
+offset_right = 0.638
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_jp0m5")
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="Fan" type="TextureButton" parent="Difficulty"]
+anchors_preset = -1
+anchor_left = 0.517
+anchor_top = 0.415
+anchor_right = 0.583
+anchor_bottom = 0.533333
+offset_left = -0.640686
+offset_top = -0.199799
+offset_right = 0.638062
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_hdqyq")
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="Stan" type="TextureButton" parent="Difficulty"]
+anchors_preset = -1
+anchor_left = 0.617
+anchor_top = 0.415
+anchor_right = 0.683
+anchor_bottom = 0.533333
+offset_left = -0.640869
+offset_top = -0.199799
+offset_right = 0.637939
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_x8lp7")
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.82963
+anchor_right = 1.0
+anchor_bottom = 0.948148
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_ywp2m")
+text = "START"
+script = ExtResource("6_rs6w1")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Difficulty/Baby" to="Difficulty" method="_on_baby_pressed"]
+[connection signal="pressed" from="Difficulty/Avid" to="Difficulty" method="_on_avid_pressed"]
+[connection signal="pressed" from="Difficulty/Fan" to="Difficulty" method="_on_fan_pressed"]
+[connection signal="pressed" from="Difficulty/Stan" to="Difficulty" method="_on_stan_pressed"]
+[connection signal="pressed" from="Start" to="Start" method="_on_pressed"]

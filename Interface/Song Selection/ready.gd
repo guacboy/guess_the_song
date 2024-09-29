@@ -7,4 +7,4 @@ func _process(delta) -> void:
 		disabled = true
 
 func _on_pressed() -> void:
-	get_tree().change_scene_to_file("res://Interface/Gameplay/gameplay.tscn")
+	get_tree().change_scene_to_file("res://Interface/Difficulty Selection/difficulty_selection.tscn")
