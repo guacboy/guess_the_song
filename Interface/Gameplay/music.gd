@@ -7,6 +7,7 @@ extends AudioStreamPlayer2D
 var next_cnt: int = 1
 
 func _ready() -> void:
+	Data.current_selected_songs_dict = Data.selected_songs_dict
 	Signals.connect("on_new_song", _on_new_song)
 
 func _input(event) -> void:
@@ -23,8 +24,9 @@ func _on_new_song(difficulty_duration: float) -> void:
 	next_cnt = 1 # resets count
 	
 	stop() # stops any previous songs
-	current_song = Data.selected_songs_dict.keys().pick_random()
-	stream = Data.selected_songs_dict[current_song]
+	current_song = Data.current_selected_songs_dict.keys().pick_random()
+	stream = Data.current_selected_songs_dict[current_song]
+	Data.current_selected_songs_dict.erase(current_song) # removes selected song; prevents repeats
 	play()
 	
 	song_duration.stop() # stops any previous timers

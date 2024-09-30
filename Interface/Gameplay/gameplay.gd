@@ -15,7 +15,7 @@ extends Control
 func _ready() -> void:
 	Signals.emit_signal("on_new_song", Data.difficulty_duration)
 	
-	Data.total_songs = Data.selected_songs_dict.size()
+	Data.total_songs = Data.selected_songs_dict.size() + 1
 	Data.correct_songs = 0
 	Data.missed_songs = 0
 
@@ -41,4 +41,8 @@ func _input(event) -> void:
 		
 		# resets text and plays next song
 		answer.text = "[center]"
-		Signals.emit_signal("on_new_song", Data.difficulty_duration)
+		if Data.current_selected_songs_dict.size() > 0:
+			Signals.emit_signal("on_new_song", Data.difficulty_duration)
+		else:
+			await get_tree().create_timer(1.0).timeout
+			get_tree().change_scene_to_file("res://Interface/Result/results.tscn")
