@@ -7,7 +7,7 @@ extends AudioStreamPlayer2D
 var next_cnt: int = 1
 
 func _ready() -> void:
-	Data.current_selected_songs_dict = Data.selected_songs_dict
+	Data.current_selected_songs_dict = Data.selected_songs_dict.duplicate()
 	Signals.connect("on_new_song", _on_new_song)
 
 func _input(event) -> void:
