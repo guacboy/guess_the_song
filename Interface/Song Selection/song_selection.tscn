@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bf61dt7x1muc4"]
+[gd_scene load_steps=14 format=3 uid="uid://bf61dt7x1muc4"]
 
 [ext_resource type="Texture2D" uid="uid://bp7j7utc1x2tc" path="res://Interface/Song Selection/Assets/Artist Profiles/Kanye West/kanye_west_pfp.png" id="1_glfhw"]
 [ext_resource type="Script" path="res://Interface/Song Selection/artist_profile.gd" id="2_6kud4"]
@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://dx0uetvd0djtl" path="res://Music/Kanye West/Vultures 1/BURN - Kanye West & Ty Dolla $ign (lyrics).mp3" id="7_cggoi"]
 [ext_resource type="Script" path="res://Interface/Song Selection/ready.gd" id="9_3xl64"]
 [ext_resource type="AudioStream" uid="uid://37ikamjxeqdw" path="res://Music/Kanye West/Vultures 1/Kanye West - Beg Forgiveness (Lyrics) ft. Ty Dolla $ign, Chris Brown.mp3" id="10_1pwcy"]
+[ext_resource type="Script" path="res://Interface/Song Selection/song_playing.gd" id="11_bwoem"]
+[ext_resource type="Script" path="res://Interface/Song Selection/song_name_scroll.gd" id="11_klk0u"]
 
 [node name="SongSelection" type="Control"]
 layout_mode = 3
@@ -21,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Artist" type="VBoxContainer" parent="."]
+[node name="Artists" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.0888889
@@ -31,24 +33,24 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Artist1" type="VBoxContainer" parent="Artist"]
+[node name="Artist1" type="VBoxContainer" parent="Artists"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="Artist2" type="VBoxContainer" parent="Artist"]
+[node name="Artist2" type="VBoxContainer" parent="Artists"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
 
-[node name="Artist3" type="VBoxContainer" parent="Artist"]
+[node name="Artist3" type="VBoxContainer" parent="Artists"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Artist4" type="VBoxContainer" parent="Artist"]
+[node name="Artist4" type="VBoxContainer" parent="Artists"]
 layout_mode = 2
 
-[node name="ArtistProfile" type="TextureButton" parent="Artist/Artist4"]
+[node name="ArtistProfile" type="TextureButton" parent="Artists/Artist4"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
@@ -58,7 +60,7 @@ texture_normal = ExtResource("1_glfhw")
 stretch_mode = 6
 script = ExtResource("2_6kud4")
 
-[node name="ArtistName" type="RichTextLabel" parent="Artist/Artist4/ArtistProfile"]
+[node name="ArtistName" type="RichTextLabel" parent="Artists/Artist4/ArtistProfile"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0384615
@@ -73,7 +75,7 @@ text = "KANYE WEST"
 fit_content = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ArtistSelected" type="CheckBox" parent="Artist/Artist4/ArtistProfile"]
+[node name="ArtistSelected" type="CheckBox" parent="Artists/Artist4/ArtistProfile"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.87485
@@ -85,11 +87,11 @@ grow_vertical = 2
 script = ExtResource("4_u76dc")
 metadata/_edit_use_anchors_ = true
 
-[node name="Albums" type="VBoxContainer" parent="Artist/Artist4"]
+[node name="Albums" type="VBoxContainer" parent="Artists/Artist4"]
 visible = false
 layout_mode = 2
 
-[node name="AlbumCover" type="TextureButton" parent="Artist/Artist4/Albums"]
+[node name="AlbumCover" type="TextureButton" parent="Artists/Artist4/Albums"]
 layout_mode = 2
 size_flags_stretch_ratio = 1.5
 toggle_mode = true
@@ -97,7 +99,7 @@ texture_normal = ExtResource("4_k0ui4")
 stretch_mode = 6
 script = ExtResource("5_4ggug")
 
-[node name="AlbumName" type="RichTextLabel" parent="Artist/Artist4/Albums/AlbumCover"]
+[node name="AlbumName" type="RichTextLabel" parent="Artists/Artist4/Albums/AlbumCover"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0384615
@@ -112,7 +114,7 @@ text = "VULTURES 1"
 fit_content = true
 metadata/_edit_use_anchors_ = true
 
-[node name="AlbumSelected" type="CheckBox" parent="Artist/Artist4/Albums/AlbumCover"]
+[node name="AlbumSelected" type="CheckBox" parent="Artists/Artist4/Albums/AlbumCover"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.87485
@@ -124,14 +126,14 @@ grow_vertical = 2
 script = ExtResource("6_hsvr6")
 metadata/_edit_use_anchors_ = true
 
-[node name="Songs" type="VBoxContainer" parent="Artist/Artist4/Albums"]
+[node name="Songs" type="VBoxContainer" parent="Artists/Artist4/Albums"]
 visible = false
 layout_mode = 2
 
-[node name="SongBox1" type="HBoxContainer" parent="Artist/Artist4/Albums/Songs"]
+[node name="SongBox1" type="HBoxContainer" parent="Artists/Artist4/Albums/Songs"]
 layout_mode = 2
 
-[node name="Burn" type="RichTextLabel" parent="Artist/Artist4/Albums/Songs/SongBox1"]
+[node name="Burn" type="RichTextLabel" parent="Artists/Artist4/Albums/Songs/SongBox1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_7gqkp")
@@ -140,20 +142,21 @@ text = " BURN"
 fit_content = true
 metadata/_edit_use_anchors_ = true
 
-[node name="SongSelected" type="CheckBox" parent="Artist/Artist4/Albums/Songs/SongBox1"]
+[node name="SongSelected" type="CheckBox" parent="Artists/Artist4/Albums/Songs/SongBox1"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.14
 script = ExtResource("6_wjtoa")
+artist_feature_name = "Ty Dolla $ign"
 song_selected_ID = {
 "BURN": ExtResource("7_cggoi")
 }
 metadata/_edit_use_anchors_ = true
 
-[node name="SongBox2" type="HBoxContainer" parent="Artist/Artist4/Albums/Songs"]
+[node name="SongBox2" type="HBoxContainer" parent="Artists/Artist4/Albums/Songs"]
 layout_mode = 2
 
-[node name="Beg Forgiveness" type="RichTextLabel" parent="Artist/Artist4/Albums/Songs/SongBox2"]
+[node name="Beg Forgiveness" type="RichTextLabel" parent="Artists/Artist4/Albums/Songs/SongBox2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_7gqkp")
@@ -163,29 +166,96 @@ fit_content = true
 autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="SongSelected" type="CheckBox" parent="Artist/Artist4/Albums/Songs/SongBox2"]
+[node name="SongSelected" type="CheckBox" parent="Artists/Artist4/Albums/Songs/SongBox2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.14
 script = ExtResource("6_wjtoa")
+artist_feature_name = "Ty Dolla $ign"
 song_selected_ID = {
 "BEG FORGIVENESS": ExtResource("10_1pwcy")
 }
 metadata/_edit_use_anchors_ = true
 
-[node name="Artist5" type="VBoxContainer" parent="Artist"]
+[node name="Artist5" type="VBoxContainer" parent="Artists"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Artist6" type="VBoxContainer" parent="Artist"]
+[node name="Artist6" type="VBoxContainer" parent="Artists"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
 
-[node name="Artist7" type="VBoxContainer" parent="Artist"]
+[node name="Artist7" type="VBoxContainer" parent="Artists"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
+
+[node name="SongPlaying" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("11_bwoem")
+
+[node name="SongNameBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.0148148
+anchor_right = 1.0
+anchor_bottom = 0.103704
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0.211765, 0.211765, 0.392157)
+metadata/_edit_use_anchors_ = true
+
+[node name="SongNameScroll" type="ScrollContainer" parent="SongNameBackground"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0192308
+anchor_top = 0.166667
+anchor_right = 0.980769
+anchor_bottom = 0.833333
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+script = ExtResource("11_klk0u")
+
+[node name="SongName" type="RichTextLabel" parent="SongNameBackground/SongNameScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_7gqkp")
+theme_override_font_sizes/normal_font_size = 55
+text = "this is a long test"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="InitalDelay" type="Timer" parent="SongNameBackground/SongNameScroll"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="ScrollRightTimer" type="Timer" parent="SongNameBackground/SongNameScroll"]
+wait_time = 15.0
+one_shot = true
+
+[node name="ScrollLeftTimer" type="Timer" parent="SongNameBackground/SongNameScroll"]
+wait_time = 11.0
+one_shot = true
+
+[node name="AlbumCoverDisplay" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.466667
+anchor_top = 0.118519
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_k0ui4")
+metadata/_edit_use_anchors_ = true
 
 [node name="Ready" type="Button" parent="."]
 layout_mode = 1
@@ -201,10 +271,15 @@ text = "READY	"
 script = ExtResource("9_3xl64")
 metadata/_edit_use_anchors_ = true
 
-[connection signal="toggled" from="Artist/Artist4/ArtistProfile" to="Artist/Artist4/ArtistProfile" method="_on_toggled"]
-[connection signal="toggled" from="Artist/Artist4/ArtistProfile/ArtistSelected" to="Artist/Artist4/ArtistProfile/ArtistSelected" method="_on_toggled"]
-[connection signal="toggled" from="Artist/Artist4/Albums/AlbumCover" to="Artist/Artist4/Albums/AlbumCover" method="_on_toggled"]
-[connection signal="toggled" from="Artist/Artist4/Albums/AlbumCover/AlbumSelected" to="Artist/Artist4/Albums/AlbumCover/AlbumSelected" method="_on_toggled"]
-[connection signal="toggled" from="Artist/Artist4/Albums/Songs/SongBox1/SongSelected" to="Artist/Artist4/Albums/Songs/SongBox1/SongSelected" method="_on_toggled"]
-[connection signal="toggled" from="Artist/Artist4/Albums/Songs/SongBox2/SongSelected" to="Artist/Artist4/Albums/Songs/SongBox2/SongSelected" method="_on_toggled"]
+[connection signal="toggled" from="Artists/Artist4/ArtistProfile" to="Artists/Artist4/ArtistProfile" method="_on_toggled"]
+[connection signal="toggled" from="Artists/Artist4/ArtistProfile/ArtistSelected" to="Artists/Artist4/ArtistProfile/ArtistSelected" method="_on_toggled"]
+[connection signal="toggled" from="Artists/Artist4/Albums/AlbumCover" to="Artists/Artist4/Albums/AlbumCover" method="_on_toggled"]
+[connection signal="toggled" from="Artists/Artist4/Albums/AlbumCover/AlbumSelected" to="Artists/Artist4/Albums/AlbumCover/AlbumSelected" method="_on_toggled"]
+[connection signal="pressed" from="Artists/Artist4/Albums/Songs/SongBox1/SongSelected" to="Artists/Artist4/Albums/Songs/SongBox1/SongSelected" method="_on_pressed"]
+[connection signal="toggled" from="Artists/Artist4/Albums/Songs/SongBox1/SongSelected" to="Artists/Artist4/Albums/Songs/SongBox1/SongSelected" method="_on_toggled"]
+[connection signal="pressed" from="Artists/Artist4/Albums/Songs/SongBox2/SongSelected" to="Artists/Artist4/Albums/Songs/SongBox2/SongSelected" method="_on_pressed"]
+[connection signal="toggled" from="Artists/Artist4/Albums/Songs/SongBox2/SongSelected" to="Artists/Artist4/Albums/Songs/SongBox2/SongSelected" method="_on_toggled"]
+[connection signal="timeout" from="SongNameBackground/SongNameScroll/InitalDelay" to="SongNameBackground/SongNameScroll" method="_on_inital_delay_timeout"]
+[connection signal="timeout" from="SongNameBackground/SongNameScroll/ScrollRightTimer" to="SongNameBackground/SongNameScroll" method="_on_scroll_right_timer_timeout"]
+[connection signal="timeout" from="SongNameBackground/SongNameScroll/ScrollLeftTimer" to="SongNameBackground/SongNameScroll" method="_on_scroll_left_timer_timeout"]
 [connection signal="pressed" from="Ready" to="Ready" method="_on_pressed"]
