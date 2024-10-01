@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bf61dt7x1muc4"]
+[gd_scene load_steps=17 format=3 uid="uid://bf61dt7x1muc4"]
 
 [ext_resource type="Texture2D" uid="uid://bp7j7utc1x2tc" path="res://Interface/Song Selection/Assets/Artist Profiles/Kanye West/kanye_west_pfp.png" id="1_glfhw"]
 [ext_resource type="Script" path="res://Interface/Song Selection/artist_profile.gd" id="2_6kud4"]
@@ -6,13 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://3tgta3epwgbf" path="res://Interface/Song Selection/Assets/Album Cover/Kanye West/Vultures 1/vultures_1_cover.png" id="4_k0ui4"]
 [ext_resource type="Script" path="res://Interface/Song Selection/artist_selected.gd" id="4_u76dc"]
 [ext_resource type="Script" path="res://Interface/Song Selection/album_cover.gd" id="5_4ggug"]
+[ext_resource type="Texture2D" uid="uid://cwwktgbi2guoy" path="res://Interface/Song Selection/Assets/Album Cover/Kanye West/The Life Of Pablo/the_life_of_pablo_cover.png" id="5_fgdfi"]
 [ext_resource type="Script" path="res://Interface/Song Selection/album_selected.gd" id="6_hsvr6"]
 [ext_resource type="Script" path="res://Interface/Song Selection/song_selected.gd" id="6_wjtoa"]
 [ext_resource type="AudioStream" uid="uid://dx0uetvd0djtl" path="res://Music/Kanye West/Vultures 1/BURN - Kanye West & Ty Dolla $ign (lyrics).mp3" id="7_cggoi"]
 [ext_resource type="Script" path="res://Interface/Song Selection/ready.gd" id="9_3xl64"]
+[ext_resource type="AudioStream" uid="uid://dib1er3ldlqtq" path="res://Music/Kanye West/The Life Of Pablo/Saint Pablo - Kanye West [LYRICS].mp3" id="9_melv6"]
 [ext_resource type="AudioStream" uid="uid://37ikamjxeqdw" path="res://Music/Kanye West/Vultures 1/Kanye West - Beg Forgiveness (Lyrics) ft. Ty Dolla $ign, Chris Brown.mp3" id="10_1pwcy"]
 [ext_resource type="Script" path="res://Interface/Song Selection/song_playing.gd" id="11_bwoem"]
 [ext_resource type="Script" path="res://Interface/Song Selection/song_name_scroll.gd" id="11_klk0u"]
+[ext_resource type="Script" path="res://Interface/Song Selection/album_cover_display.gd" id="13_hjvgk"]
 
 [node name="SongSelection" type="Control"]
 layout_mode = 3
@@ -91,7 +94,75 @@ metadata/_edit_use_anchors_ = true
 visible = false
 layout_mode = 2
 
-[node name="AlbumCover" type="TextureButton" parent="Artists/Artist4/Albums"]
+[node name="AlbumTLOP" type="VBoxContainer" parent="Artists/Artist4/Albums"]
+layout_mode = 2
+
+[node name="AlbumCover" type="TextureButton" parent="Artists/Artist4/Albums/AlbumTLOP"]
+layout_mode = 2
+size_flags_stretch_ratio = 1.5
+toggle_mode = true
+texture_normal = ExtResource("5_fgdfi")
+stretch_mode = 6
+script = ExtResource("5_4ggug")
+
+[node name="AlbumName" type="RichTextLabel" parent="Artists/Artist4/Albums/AlbumTLOP/AlbumCover"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0384615
+anchor_top = 0.323276
+anchor_right = 0.807692
+anchor_bottom = 0.681035
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_7gqkp")
+theme_override_font_sizes/normal_font_size = 50
+text = "THE LIFE OF PABLO"
+fit_content = true
+metadata/_edit_use_anchors_ = true
+
+[node name="AlbumSelected" type="CheckBox" parent="Artists/Artist4/Albums/AlbumTLOP/AlbumCover"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.87485
+anchor_top = 0.346491
+anchor_right = 1.0
+anchor_bottom = 0.684211
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_hsvr6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Songs" type="VBoxContainer" parent="Artists/Artist4/Albums/AlbumTLOP"]
+visible = false
+layout_mode = 2
+
+[node name="SongBox1" type="HBoxContainer" parent="Artists/Artist4/Albums/AlbumTLOP/Songs"]
+layout_mode = 2
+
+[node name="SaintPablo" type="RichTextLabel" parent="Artists/Artist4/Albums/AlbumTLOP/Songs/SongBox1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_7gqkp")
+theme_override_font_sizes/normal_font_size = 40
+text = " SAINT PABLO"
+fit_content = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SongSelected" type="CheckBox" parent="Artists/Artist4/Albums/AlbumTLOP/Songs/SongBox1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.14
+script = ExtResource("6_wjtoa")
+song_selected_ID = {
+"SAINT PABLO": ExtResource("9_melv6")
+}
+metadata/_edit_use_anchors_ = true
+
+[node name="AlbumVultures1" type="VBoxContainer" parent="Artists/Artist4/Albums"]
+layout_mode = 2
+
+[node name="AlbumCover" type="TextureButton" parent="Artists/Artist4/Albums/AlbumVultures1"]
 layout_mode = 2
 size_flags_stretch_ratio = 1.5
 toggle_mode = true
@@ -99,7 +170,7 @@ texture_normal = ExtResource("4_k0ui4")
 stretch_mode = 6
 script = ExtResource("5_4ggug")
 
-[node name="AlbumName" type="RichTextLabel" parent="Artists/Artist4/Albums/AlbumCover"]
+[node name="AlbumName" type="RichTextLabel" parent="Artists/Artist4/Albums/AlbumVultures1/AlbumCover"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0384615
@@ -114,7 +185,7 @@ text = "VULTURES 1"
 fit_content = true
 metadata/_edit_use_anchors_ = true
 
-[node name="AlbumSelected" type="CheckBox" parent="Artists/Artist4/Albums/AlbumCover"]
+[node name="AlbumSelected" type="CheckBox" parent="Artists/Artist4/Albums/AlbumVultures1/AlbumCover"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.87485
@@ -126,14 +197,14 @@ grow_vertical = 2
 script = ExtResource("6_hsvr6")
 metadata/_edit_use_anchors_ = true
 
-[node name="Songs" type="VBoxContainer" parent="Artists/Artist4/Albums"]
+[node name="Songs" type="VBoxContainer" parent="Artists/Artist4/Albums/AlbumVultures1"]
 visible = false
 layout_mode = 2
 
-[node name="SongBox1" type="HBoxContainer" parent="Artists/Artist4/Albums/Songs"]
+[node name="SongBox1" type="HBoxContainer" parent="Artists/Artist4/Albums/AlbumVultures1/Songs"]
 layout_mode = 2
 
-[node name="Burn" type="RichTextLabel" parent="Artists/Artist4/Albums/Songs/SongBox1"]
+[node name="Burn" type="RichTextLabel" parent="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_7gqkp")
@@ -142,7 +213,7 @@ text = " BURN"
 fit_content = true
 metadata/_edit_use_anchors_ = true
 
-[node name="SongSelected" type="CheckBox" parent="Artists/Artist4/Albums/Songs/SongBox1"]
+[node name="SongSelected" type="CheckBox" parent="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox1"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.14
@@ -153,10 +224,10 @@ song_selected_ID = {
 }
 metadata/_edit_use_anchors_ = true
 
-[node name="SongBox2" type="HBoxContainer" parent="Artists/Artist4/Albums/Songs"]
+[node name="SongBox2" type="HBoxContainer" parent="Artists/Artist4/Albums/AlbumVultures1/Songs"]
 layout_mode = 2
 
-[node name="Beg Forgiveness" type="RichTextLabel" parent="Artists/Artist4/Albums/Songs/SongBox2"]
+[node name="BegForgiveness" type="RichTextLabel" parent="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_7gqkp")
@@ -166,7 +237,7 @@ fit_content = true
 autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="SongSelected" type="CheckBox" parent="Artists/Artist4/Albums/Songs/SongBox2"]
+[node name="SongSelected" type="CheckBox" parent="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.14
@@ -225,7 +296,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_7gqkp")
 theme_override_font_sizes/normal_font_size = 55
-text = "this is a long test"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -245,7 +315,6 @@ wait_time = 11.0
 one_shot = true
 
 [node name="AlbumCoverDisplay" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.466667
@@ -254,7 +323,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_k0ui4")
+script = ExtResource("13_hjvgk")
+album_cover_ID = {
+"THE LIFE OF PABLO": ExtResource("5_fgdfi"),
+"VULTURES 1": ExtResource("4_k0ui4")
+}
 metadata/_edit_use_anchors_ = true
 
 [node name="Ready" type="Button" parent="."]
@@ -273,12 +346,16 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="toggled" from="Artists/Artist4/ArtistProfile" to="Artists/Artist4/ArtistProfile" method="_on_toggled"]
 [connection signal="toggled" from="Artists/Artist4/ArtistProfile/ArtistSelected" to="Artists/Artist4/ArtistProfile/ArtistSelected" method="_on_toggled"]
-[connection signal="toggled" from="Artists/Artist4/Albums/AlbumCover" to="Artists/Artist4/Albums/AlbumCover" method="_on_toggled"]
-[connection signal="toggled" from="Artists/Artist4/Albums/AlbumCover/AlbumSelected" to="Artists/Artist4/Albums/AlbumCover/AlbumSelected" method="_on_toggled"]
-[connection signal="pressed" from="Artists/Artist4/Albums/Songs/SongBox1/SongSelected" to="Artists/Artist4/Albums/Songs/SongBox1/SongSelected" method="_on_pressed"]
-[connection signal="toggled" from="Artists/Artist4/Albums/Songs/SongBox1/SongSelected" to="Artists/Artist4/Albums/Songs/SongBox1/SongSelected" method="_on_toggled"]
-[connection signal="pressed" from="Artists/Artist4/Albums/Songs/SongBox2/SongSelected" to="Artists/Artist4/Albums/Songs/SongBox2/SongSelected" method="_on_pressed"]
-[connection signal="toggled" from="Artists/Artist4/Albums/Songs/SongBox2/SongSelected" to="Artists/Artist4/Albums/Songs/SongBox2/SongSelected" method="_on_toggled"]
+[connection signal="toggled" from="Artists/Artist4/Albums/AlbumTLOP/AlbumCover" to="Artists/Artist4/Albums/AlbumTLOP/AlbumCover" method="_on_toggled"]
+[connection signal="toggled" from="Artists/Artist4/Albums/AlbumTLOP/AlbumCover/AlbumSelected" to="Artists/Artist4/Albums/AlbumTLOP/AlbumCover/AlbumSelected" method="_on_toggled"]
+[connection signal="pressed" from="Artists/Artist4/Albums/AlbumTLOP/Songs/SongBox1/SongSelected" to="Artists/Artist4/Albums/AlbumTLOP/Songs/SongBox1/SongSelected" method="_on_pressed"]
+[connection signal="toggled" from="Artists/Artist4/Albums/AlbumTLOP/Songs/SongBox1/SongSelected" to="Artists/Artist4/Albums/AlbumTLOP/Songs/SongBox1/SongSelected" method="_on_toggled"]
+[connection signal="toggled" from="Artists/Artist4/Albums/AlbumVultures1/AlbumCover" to="Artists/Artist4/Albums/AlbumVultures1/AlbumCover" method="_on_toggled"]
+[connection signal="toggled" from="Artists/Artist4/Albums/AlbumVultures1/AlbumCover/AlbumSelected" to="Artists/Artist4/Albums/AlbumVultures1/AlbumCover/AlbumSelected" method="_on_toggled"]
+[connection signal="pressed" from="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox1/SongSelected" to="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox1/SongSelected" method="_on_pressed"]
+[connection signal="toggled" from="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox1/SongSelected" to="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox1/SongSelected" method="_on_toggled"]
+[connection signal="pressed" from="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox2/SongSelected" to="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox2/SongSelected" method="_on_pressed"]
+[connection signal="toggled" from="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox2/SongSelected" to="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox2/SongSelected" method="_on_toggled"]
 [connection signal="timeout" from="SongNameBackground/SongNameScroll/InitalDelay" to="SongNameBackground/SongNameScroll" method="_on_inital_delay_timeout"]
 [connection signal="timeout" from="SongNameBackground/SongNameScroll/ScrollRightTimer" to="SongNameBackground/SongNameScroll" method="_on_scroll_right_timer_timeout"]
 [connection signal="timeout" from="SongNameBackground/SongNameScroll/ScrollLeftTimer" to="SongNameBackground/SongNameScroll" method="_on_scroll_left_timer_timeout"]

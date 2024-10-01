@@ -1,5 +1,8 @@
 extends Node
 
+# song_selection visual displays
+signal on_new_album_cover(album_cover_name)
+
 # status system
 signal on_status_decrement(status_type)
 

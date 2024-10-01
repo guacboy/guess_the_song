@@ -2,6 +2,7 @@ extends TextureButton
 
 @onready var songs = $"../Songs"
 @onready var song_playing = $"../../../../SongPlaying"
+@onready var albums = $"../.."
 
 func _on_toggled(toggled_on) -> void:
 	songs.visible = not songs.visible

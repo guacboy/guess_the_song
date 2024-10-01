@@ -1,11 +1,12 @@
 extends CheckBox
 
-@onready var artist_name = $"../../../../ArtistProfile/ArtistName"
-@onready var song_playing = $"../../../../../../SongPlaying"
-@onready var song_name = $"../../../../../../SongNameBackground/SongNameScroll/SongName"
+@onready var artist_name = $"../../../../../ArtistProfile/ArtistName"
+@onready var album_name = $"../../../AlbumCover/AlbumName"
+@onready var song_playing = $"../../../../../../../SongPlaying"
+@onready var song_name = $"../../../../../../../SongNameBackground/SongNameScroll/SongName"
 
 @export var artist_feature_name: String
-@export var song_selected_ID: Dictionary = {}
+@export var song_selected_ID: Dictionary
 
 func _on_toggled(toggled_on) -> void:
 	if toggled_on:
@@ -27,3 +28,5 @@ func _on_pressed():
 			song_name.text = key + " - " + artist_name.text
 			if artist_feature_name != null:
 				song_name.text += " (ft. " + artist_feature_name + ")"
+				
+	Signals.emit_signal("on_new_album_cover", album_name.text)
