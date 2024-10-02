@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://bf61dt7x1muc4"]
+[gd_scene load_steps=17 format=3 uid="uid://bf61dt7x1muc4"]
 
+[ext_resource type="Script" path="res://Interface/Song Selection/song_selection.gd" id="1_c0erp"]
 [ext_resource type="Texture2D" uid="uid://bp7j7utc1x2tc" path="res://Interface/Song Selection/Assets/Artist Profiles/Kanye West/kanye_west_pfp.png" id="1_glfhw"]
 [ext_resource type="Script" path="res://Interface/Song Selection/artist_profile.gd" id="2_6kud4"]
 [ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="2_7gqkp"]
@@ -23,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_c0erp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Artists" type="VBoxContainer" parent="."]
@@ -319,12 +321,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_fgdfi")
 script = ExtResource("13_hjvgk")
-album_cover_ID = {
-"THE LIFE OF PABLO": ExtResource("5_fgdfi"),
-"VULTURES 1": ExtResource("4_k0ui4")
-}
 metadata/_edit_use_anchors_ = true
 
 [node name="Ready" type="Button" parent="."]
