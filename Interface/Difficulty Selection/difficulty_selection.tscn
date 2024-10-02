@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://khylkgech21n"]
+[gd_scene load_steps=11 format=3 uid="uid://khylkgech21n"]
 
 [ext_resource type="Script" path="res://Interface/Difficulty Selection/difficulty.gd" id="1_f2bk7"]
 [ext_resource type="Texture2D" uid="uid://cmsauwc0dw5gu" path="res://Interface/Difficulty Selection/Assets/baby_button.png" id="1_jjmpb"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://c86k0cti5ik8h" path="res://Interface/Difficulty Selection/Assets/stan_button.png" id="4_x8lp7"]
 [ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="5_ywp2m"]
 [ext_resource type="Script" path="res://Interface/Difficulty Selection/start.gd" id="6_rs6w1"]
+[ext_resource type="Texture2D" uid="uid://cwwktgbi2guoy" path="res://Interface/Song Selection/Assets/Album Cover/Kanye West/The Life Of Pablo/the_life_of_pablo_cover.png" id="8_gyud8"]
+[ext_resource type="Script" path="res://Interface/Song Selection/album_cover_display.gd" id="9_jpl3h"]
+[ext_resource type="Texture2D" uid="uid://3tgta3epwgbf" path="res://Interface/Song Selection/Assets/Album Cover/Kanye West/Vultures 1/vultures_1_cover.png" id="10_nh6x4"]
 
 [node name="DifficultySelection" type="Control"]
 layout_mode = 3
@@ -92,6 +95,23 @@ grow_vertical = 2
 theme = ExtResource("5_ywp2m")
 text = "START"
 script = ExtResource("6_rs6w1")
+metadata/_edit_use_anchors_ = true
+
+[node name="AlbumCoverDisplay" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.133333
+anchor_top = 0.118519
+anchor_right = 0.4
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_gyud8")
+script = ExtResource("9_jpl3h")
+album_cover_ID = {
+"THE LIFE OF PABLO": ExtResource("8_gyud8"),
+"VULTURES 1": ExtResource("10_nh6x4")
+}
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Difficulty/Baby" to="Difficulty" method="_on_baby_pressed"]

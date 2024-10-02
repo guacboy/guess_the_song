@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bf61dt7x1muc4"]
+[gd_scene load_steps=16 format=3 uid="uid://bf61dt7x1muc4"]
 
 [ext_resource type="Texture2D" uid="uid://bp7j7utc1x2tc" path="res://Interface/Song Selection/Assets/Artist Profiles/Kanye West/kanye_west_pfp.png" id="1_glfhw"]
 [ext_resource type="Script" path="res://Interface/Song Selection/artist_profile.gd" id="2_6kud4"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" path="res://Interface/Song Selection/ready.gd" id="9_3xl64"]
 [ext_resource type="AudioStream" uid="uid://dib1er3ldlqtq" path="res://Music/Kanye West/The Life Of Pablo/Saint Pablo - Kanye West [LYRICS].mp3" id="9_melv6"]
 [ext_resource type="AudioStream" uid="uid://37ikamjxeqdw" path="res://Music/Kanye West/Vultures 1/Kanye West - Beg Forgiveness (Lyrics) ft. Ty Dolla $ign, Chris Brown.mp3" id="10_1pwcy"]
-[ext_resource type="Script" path="res://Interface/Song Selection/song_playing.gd" id="11_bwoem"]
 [ext_resource type="Script" path="res://Interface/Song Selection/song_name_scroll.gd" id="11_klk0u"]
 [ext_resource type="Script" path="res://Interface/Song Selection/album_cover_display.gd" id="13_hjvgk"]
 
@@ -262,9 +261,6 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="SongPlaying" type="AudioStreamPlayer2D" parent="."]
-script = ExtResource("11_bwoem")
-
 [node name="SongNameBackground" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -323,6 +319,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("5_fgdfi")
 script = ExtResource("13_hjvgk")
 album_cover_ID = {
 "THE LIFE OF PABLO": ExtResource("5_fgdfi"),

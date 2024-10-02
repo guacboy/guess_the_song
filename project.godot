@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 
 Signals="*res://Scripts/signals.gd"
 Data="*res://Scripts/data.gd"
+SongPlayer="*res://Common/Music/song_player.tscn"
 
 [display]
 

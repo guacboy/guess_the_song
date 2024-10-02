@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bajc1a8iuf288"]
+
+[ext_resource type="AudioStream" uid="uid://dx0uetvd0djtl" path="res://Music/Kanye West/Vultures 1/BURN - Kanye West & Ty Dolla $ign (lyrics).mp3" id="1_yjbv8"]
+[ext_resource type="Script" path="res://Common/Music/song_player.gd" id="2_i6oa4"]
+
+[node name="SongPlayer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_yjbv8")
+script = ExtResource("2_i6oa4")

@@ -7,4 +7,5 @@ func _process(delta) -> void:
 		disabled = true
 
 func _on_pressed():
+	SongPlayer.stop_song()
 	get_tree().change_scene_to_file("res://Interface/Gameplay/gameplay.tscn")

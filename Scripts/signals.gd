@@ -12,4 +12,3 @@ signal on_score_increment()
 
 # adding a new song
 signal on_new_song(difficulty_duration)
-signal on_modify_song_selection_dict(action)

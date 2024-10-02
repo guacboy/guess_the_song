@@ -2,7 +2,6 @@ extends CheckBox
 
 @onready var artist_name = $"../../../../../ArtistProfile/ArtistName"
 @onready var album_name = $"../../../AlbumCover/AlbumName"
-@onready var song_playing = $"../../../../../../../SongPlaying"
 @onready var song_name = $"../../../../../../../SongNameBackground/SongNameScroll/SongName"
 
 @export var artist_feature_name: String
@@ -16,13 +15,12 @@ func _on_toggled(toggled_on) -> void:
 		for key in song_selected_ID:
 			Data.selected_songs_dict.erase(key)
 
-func _on_pressed():
+func _on_pressed() -> void:
 	for key in song_selected_ID:
 		# avoids repeating start of song if same song is being toggled
-		if song_playing.stream != song_selected_ID[key]:
-			song_playing.stop()
-			song_playing.stream = song_selected_ID[key]
-			song_playing.play()
+		if SongPlayer.current_song_playing != song_selected_ID[key]:
+			SongPlayer.current_song_playing = song_selected_ID[key]
+			SongPlayer.on_change_song(song_selected_ID[key])
 			
 			# displays current song playing
 			song_name.text = key + " - " + artist_name.text
