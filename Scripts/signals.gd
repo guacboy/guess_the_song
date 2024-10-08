@@ -9,6 +9,9 @@ signal on_new_album_cover(album_cover_name)
 signal on_slide_album_right_to_left(is_reversed)
 signal on_slide_album_left_to_right(is_reversed)
 
+signal on_slide_mods_right_to_left(is_reversed)
+signal on_slide_ready_right_to_left(is_reversed)
+
 # song_selection background music
 signal on_restart_song()
 
