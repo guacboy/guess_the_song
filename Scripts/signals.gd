@@ -3,7 +3,7 @@ extends Node
 # song_selection visual displays
 signal on_new_song_name(song_name)
 signal on_slide_song_name_right_to_left(is_reversed)
-signal on_slide_song_name_to_right(is_reversed)
+signal on_slide_song_name_left_to_right(is_reversed)
 
 signal on_new_album_cover(album_cover_name)
 signal on_slide_album_right_to_left(is_reversed)

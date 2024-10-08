@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://khylkgech21n"]
+[gd_scene load_steps=14 format=3 uid="uid://khylkgech21n"]
 
 [ext_resource type="Script" path="res://Interface/Difficulty Selection/difficulty.gd" id="1_f2bk7"]
 [ext_resource type="Script" path="res://Interface/Difficulty Selection/difficulty_selection.gd" id="1_iwh8n"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Interface/Song Selection/song_name_scroll.gd" id="8_wn0wv"]
 [ext_resource type="Script" path="res://Interface/Song Selection/album_cover_display.gd" id="9_jpl3h"]
 [ext_resource type="Script" path="res://Interface/Song Selection/song_name.gd" id="10_4duws"]
+[ext_resource type="Script" path="res://Interface/Song Selection/mods.gd" id="12_l0vtn"]
 
 [node name="DifficultySelection" type="Control"]
 layout_mode = 3
@@ -136,6 +137,20 @@ grow_vertical = 2
 script = ExtResource("9_jpl3h")
 metadata/_edit_use_anchors_ = true
 
+[node name="Mods" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.766667
+anchor_top = 0.681481
+anchor_right = 1.0
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_ywp2m")
+text = "MODS"
+script = ExtResource("12_l0vtn")
+metadata/_edit_use_anchors_ = true
+
 [node name="Start" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -154,4 +169,5 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="Difficulty/Avid" to="Difficulty" method="_on_avid_pressed"]
 [connection signal="pressed" from="Difficulty/Fan" to="Difficulty" method="_on_fan_pressed"]
 [connection signal="pressed" from="Difficulty/Stan" to="Difficulty" method="_on_stan_pressed"]
+[connection signal="pressed" from="Mods" to="Mods" method="_on_pressed"]
 [connection signal="pressed" from="Start" to="Start" method="_on_pressed"]

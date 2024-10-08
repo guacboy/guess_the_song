@@ -33,7 +33,8 @@ func _on_slide_album_right_to_left(is_reversed: bool) -> void:
 	if tween:
 		tween.kill()
 	tween = create_tween().set_parallel()
-		
+	
+	# out of frame
 	var starting_x_position: float = 1920.0
 	var starting_opacity: float = 0.0
 	
@@ -41,6 +42,7 @@ func _on_slide_album_right_to_left(is_reversed: bool) -> void:
 		tween.tween_property(self, "position:x", starting_x_position, 0.3)
 		tween.tween_property(self, "modulate:a", starting_opacity, 0.4)
 	else:
+		# in frame
 		tween.tween_property(self, "position:x", 896.001, 0.3).from(starting_x_position)
 		tween.tween_property(self, "modulate:a", 1.0, 0.4).from(starting_opacity)
 	
@@ -50,6 +52,7 @@ func _on_slide_album_left_to_right(is_reversed: bool) -> void:
 		tween.kill()
 	tween = create_tween().set_parallel()
 	
+	# out of frame
 	var starting_x_position: float = -732
 	var starting_opacity: float = 0.0
 	
@@ -57,5 +60,6 @@ func _on_slide_album_left_to_right(is_reversed: bool) -> void:
 		tween.tween_property(self, "position:x", starting_x_position, 0.3)
 		tween.tween_property(self, "modulate:a", starting_opacity, 0.4)
 	else:
+		# in frame
 		tween.tween_property(self, "position:x", -448.0, 0.3).from(starting_x_position)
 		tween.tween_property(self, "modulate:a", 1.0, 0.4).from(starting_opacity)
