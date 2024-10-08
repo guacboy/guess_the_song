@@ -1,17 +1,22 @@
-[gd_scene load_steps=14 format=3 uid="uid://khylkgech21n"]
+[gd_scene load_steps=19 format=3 uid="uid://khylkgech21n"]
 
 [ext_resource type="Script" path="res://Interface/Difficulty Selection/difficulty.gd" id="1_f2bk7"]
-[ext_resource type="Script" path="res://Interface/Difficulty Selection/difficulty_selection.gd" id="1_iwh8n"]
 [ext_resource type="Texture2D" uid="uid://cmsauwc0dw5gu" path="res://Interface/Difficulty Selection/Assets/baby_button.png" id="1_jjmpb"]
 [ext_resource type="Texture2D" uid="uid://cfwifynu0b8wt" path="res://Interface/Difficulty Selection/Assets/avid_button.png" id="2_jp0m5"]
 [ext_resource type="Texture2D" uid="uid://b2b5fupd18ya6" path="res://Interface/Difficulty Selection/Assets/fan_button.png" id="3_hdqyq"]
+[ext_resource type="Texture2D" uid="uid://odsmv701oa2c" path="res://Interface/Difficulty Selection/Assets/baby_button_hover.png" id="3_plap8"]
 [ext_resource type="Texture2D" uid="uid://c86k0cti5ik8h" path="res://Interface/Difficulty Selection/Assets/stan_button.png" id="4_x8lp7"]
+[ext_resource type="Texture2D" uid="uid://ducrvyr0ssscu" path="res://Interface/Difficulty Selection/Assets/avid_button_hover.png" id="5_gbftm"]
 [ext_resource type="Theme" uid="uid://gjqri0x7oiwc" path="res://Theme/default.tres" id="5_ywp2m"]
 [ext_resource type="Script" path="res://Interface/Difficulty Selection/start.gd" id="6_rs6w1"]
+[ext_resource type="Texture2D" uid="uid://bv8a7haifxouc" path="res://Interface/Difficulty Selection/Assets/fan_button_hover.png" id="7_cfn27"]
 [ext_resource type="Script" path="res://Interface/Song Selection/song_name_background.gd" id="7_q73gi"]
 [ext_resource type="Script" path="res://Interface/Song Selection/song_name_scroll.gd" id="8_wn0wv"]
+[ext_resource type="Texture2D" uid="uid://cujcu5awv7aaq" path="res://Interface/Difficulty Selection/Assets/stan_button_hover.png" id="9_fr37u"]
 [ext_resource type="Script" path="res://Interface/Song Selection/album_cover_display.gd" id="9_jpl3h"]
 [ext_resource type="Script" path="res://Interface/Song Selection/song_name.gd" id="10_4duws"]
+[ext_resource type="Script" path="res://Interface/Difficulty Selection/back.gd" id="11_2s55a"]
+[ext_resource type="Texture2D" uid="uid://b1qggv3m7x1vd" path="res://Interface/Difficulty Selection/Assets/back_button.png" id="11_oydgp"]
 [ext_resource type="Script" path="res://Interface/Song Selection/mods.gd" id="12_l0vtn"]
 
 [node name="DifficultySelection" type="Control"]
@@ -21,7 +26,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_iwh8n")
 metadata/_edit_use_anchors_ = true
 
 [node name="Difficulty" type="Node" parent="."]
@@ -39,7 +43,9 @@ offset_right = 0.638672
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("1_jjmpb")
-stretch_mode = 6
+texture_pressed = ExtResource("1_jjmpb")
+texture_hover = ExtResource("3_plap8")
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Avid" type="TextureButton" parent="Difficulty"]
@@ -54,7 +60,9 @@ offset_right = 0.638
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("2_jp0m5")
-stretch_mode = 6
+texture_pressed = ExtResource("2_jp0m5")
+texture_hover = ExtResource("5_gbftm")
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Fan" type="TextureButton" parent="Difficulty"]
@@ -69,7 +77,9 @@ offset_right = 0.638062
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("3_hdqyq")
-stretch_mode = 6
+texture_pressed = ExtResource("3_hdqyq")
+texture_hover = ExtResource("7_cfn27")
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Stan" type="TextureButton" parent="Difficulty"]
@@ -84,7 +94,9 @@ offset_right = 0.637939
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_x8lp7")
-stretch_mode = 6
+texture_pressed = ExtResource("4_x8lp7")
+texture_hover = ExtResource("9_fr37u")
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="SongNameBackground" type="ColorRect" parent="."]
@@ -123,6 +135,20 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("10_4duws")
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.941667
+anchor_top = 0.0148148
+anchor_right = 0.991667
+anchor_bottom = 0.103704
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("11_oydgp")
+stretch_mode = 5
+script = ExtResource("11_2s55a")
 metadata/_edit_use_anchors_ = true
 
 [node name="AlbumCoverDisplay" type="TextureRect" parent="."]
@@ -169,5 +195,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="Difficulty/Avid" to="Difficulty" method="_on_avid_pressed"]
 [connection signal="pressed" from="Difficulty/Fan" to="Difficulty" method="_on_fan_pressed"]
 [connection signal="pressed" from="Difficulty/Stan" to="Difficulty" method="_on_stan_pressed"]
+[connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
 [connection signal="pressed" from="Mods" to="Mods" method="_on_pressed"]
 [connection signal="pressed" from="Start" to="Start" method="_on_pressed"]
