@@ -1,6 +1,7 @@
 extends AudioStreamPlayer2D
 
 var current_song_playing: AudioStreamMP3
+var current_song_name_text
 @export var album_cover_dict: Dictionary
 var current_album_cover: String
 		

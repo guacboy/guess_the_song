@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bf61dt7x1muc4"]
+[gd_scene load_steps=17 format=3 uid="uid://bf61dt7x1muc4"]
 
 [ext_resource type="Script" path="res://Interface/Song Selection/song_selection.gd" id="1_c0erp"]
 [ext_resource type="Texture2D" uid="uid://bp7j7utc1x2tc" path="res://Interface/Song Selection/Assets/Artist Profiles/Kanye West/kanye_west_pfp.png" id="1_glfhw"]
@@ -16,8 +16,6 @@
 [ext_resource type="AudioStream" uid="uid://37ikamjxeqdw" path="res://Music/Kanye West/Vultures 1/Kanye West - Beg Forgiveness (Lyrics) ft. Ty Dolla $ign, Chris Brown.mp3" id="10_1pwcy"]
 [ext_resource type="Script" path="res://Interface/Song Selection/song_name_scroll.gd" id="11_klk0u"]
 [ext_resource type="Script" path="res://Interface/Song Selection/album_cover_display.gd" id="13_hjvgk"]
-[ext_resource type="Script" path="res://Interface/Song Selection/song_name_background.gd" id="14_w6j3h"]
-[ext_resource type="Script" path="res://Interface/Song Selection/song_name.gd" id="16_ukddj"]
 
 [node name="SongSelection" type="Control"]
 layout_mode = 3
@@ -274,7 +272,6 @@ anchor_bottom = 0.103704
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.211765, 0.211765, 0.211765, 0.392157)
-script = ExtResource("14_w6j3h")
 metadata/_edit_use_anchors_ = true
 
 [node name="SongNameScroll" type="ScrollContainer" parent="SongNameBackground"]
@@ -294,14 +291,25 @@ script = ExtResource("11_klk0u")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 2
 theme = ExtResource("2_7gqkp")
 theme_override_font_sizes/normal_font_size = 55
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
-script = ExtResource("16_ukddj")
 metadata/_edit_use_anchors_ = true
+
+[node name="InitalDelay" type="Timer" parent="SongNameBackground/SongNameScroll"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="ScrollRightTimer" type="Timer" parent="SongNameBackground/SongNameScroll"]
+wait_time = 15.0
+one_shot = true
+
+[node name="ScrollLeftTimer" type="Timer" parent="SongNameBackground/SongNameScroll"]
+wait_time = 11.0
+one_shot = true
 
 [node name="AlbumCoverDisplay" type="TextureRect" parent="."]
 layout_mode = 1
@@ -341,4 +349,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="toggled" from="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox1/SongSelected" to="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox1/SongSelected" method="_on_toggled"]
 [connection signal="pressed" from="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox2/SongSelected" to="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox2/SongSelected" method="_on_pressed"]
 [connection signal="toggled" from="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox2/SongSelected" to="Artists/Artist4/Albums/AlbumVultures1/Songs/SongBox2/SongSelected" method="_on_toggled"]
+[connection signal="timeout" from="SongNameBackground/SongNameScroll/InitalDelay" to="SongNameBackground/SongNameScroll" method="_on_inital_delay_timeout"]
+[connection signal="timeout" from="SongNameBackground/SongNameScroll/ScrollRightTimer" to="SongNameBackground/SongNameScroll" method="_on_scroll_right_timer_timeout"]
+[connection signal="timeout" from="SongNameBackground/SongNameScroll/ScrollLeftTimer" to="SongNameBackground/SongNameScroll" method="_on_scroll_left_timer_timeout"]
 [connection signal="pressed" from="Ready" to="Ready" method="_on_pressed"]
